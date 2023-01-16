@@ -1,0 +1,25 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-service
+  cloud:
+    config:
+      import-check:
+        enabled: false
+    #      uri:
+    #        - http://localhost:8084
+    loadbalancer:
+      ribbon:
+        enabled: false
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      default-zone:
+        http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 10
